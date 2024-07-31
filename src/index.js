@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './scss/globals.scss'
+import 'react-toastify/dist/ReactToastify.css';
 import LoginView from './views/login';
+import { Flip, Slide, ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -10,5 +12,6 @@ root.render(
     <Routes>
       <Route path='/' element={<LoginView/>}/>
     </Routes>
+    <ToastContainer hideProgressBar closeOnClick transition={Slide} theme='colored'/>
   </BrowserRouter>
 );

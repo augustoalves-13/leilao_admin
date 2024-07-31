@@ -1,0 +1,21 @@
+@import '../../scss/colors.scss';
+
+.main-login-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  h1{
+    color: $text-color;
+  }
+
+  .form-content{
+    width: 200px;
+  };
+
+  .form-submit{
+    width: 200px;
+  }
+}

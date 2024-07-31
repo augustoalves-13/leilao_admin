@@ -1,0 +1,64 @@
+@import '../../scss/colors.scss';
+
+.input-container-main{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  label{
+    color: $text-color;
+    font-weight: 500;
+    padding: 0 2px;
+    width: fit-content;
+    position: relative;
+    background-color: $background-default;
+    bottom: -10px;
+    left: 5px;
+  }
+
+  & > input{
+    background-color: transparent;
+    border: 2px solid $text-color;
+    color: $text-default-2;
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  input:focus{
+    outline: none;
+  }
+
+  .default{
+    height: 38px;
+    border-radius: 4px;
+  }
+
+  .password-input-container{
+    height: 38px;
+    width: 100%;
+    display: flex;
+
+    input{
+      height: 100%;
+      width: 80%;
+      background-color: transparent;
+      border: 2px solid $text-color;
+      border-right: none;
+      border-radius: 5px 0px 0px 5px;
+      color: $text-default-2;
+      padding: 0 5px;
+    }
+    
+    button{
+      width: 20%;
+      background-color: transparent;
+      border: 2px solid $text-color;
+      border-left: none;
+      border-radius: 0px 5px 5px 0px;
+
+      path{
+        fill: $text-color;
+      }
+    }
+  }
+}

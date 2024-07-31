@@ -5,23 +5,30 @@ import './index.scss'
 import React, { useRef, useState } from 'react' 
 import LoadingBar from 'react-top-loading-bar'
 import Button from '../../components/Button'
+import { useNavigate } from 'react-router-dom'
+import Storage from 'local-storage'
 
 const LoginView = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [successLogin, setSuccessLogin] = useState(false)
 
+  const navigateTo = useNavigate()
+
   const ref = useRef(null)
 
   const loginSubmit = async () => {
     try {
       const request = await api.post('login', {email: email, password: password})
-      console.log(request)
 
-      if(request.data)
+      
+      Storage('@user', request.data)
       setSuccessLogin(true)
-
       ref.current.continuousStart()
+      setTimeout(()=>{
+        toast.success('Seja bem vindo, ' + request.data.name)
+        navigateTo('/dashboard')
+      },3000)
     } catch (e) {
       ref.current.complete()
       toast.error(e?.response?.data?.error)
@@ -30,7 +37,7 @@ const LoginView = () => {
 
   return (
     <main className='main-login-container'>
-      <LoadingBar color='red' ref={ref}/>
+      <LoadingBar color='#00205B' ref={ref}/>
       <h1>Login</h1>
       <section className='form-content'>
         <EntryField 

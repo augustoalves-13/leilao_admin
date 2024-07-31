@@ -17,6 +17,7 @@ const Button = (props) => {
     case "progress":
       return (
         <button
+          onMouseLeave={onHover}
           className="button-container-main"
           style={{ backgroundColor: props.color ? color : "#00205B" }}
           onClick={props.onClick}
@@ -28,6 +29,7 @@ const Button = (props) => {
     default:
       return (
         <button
+          onMouseLeave={onHover}
           className="button-container-main"
           style={{ backgroundColor: props.color ? color : "#00205B" }}
           onClick={props.onClick}

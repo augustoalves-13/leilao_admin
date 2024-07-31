@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './scss/globals.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import LoginView from './views/login';
-import { Flip, Slide, ToastContainer } from 'react-toastify';
+import { Slide, ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,0 +1,63 @@
+@import '../../scss/colors.scss';
+
+.drawer-modal-container-main{
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  .formDrawer-container-main{
+    position: absolute;
+    overflow: auto;
+    background-color: #fff;
+    width: 30%;
+    height: 100%;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    transition: .8s;
+
+    header{
+      width: 100%;
+      background-color: #d9d9d9;
+      padding: 12px 20px;
+
+      h3{
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+
+    .form-contents{
+      padding: 5%;
+    }
+
+    .buttons-container{
+      width: 70%;
+      padding: 0 5%;
+      display: flex;
+      align-items: start;
+      gap: 20px;
+    }
+  }
+
+  transition: .5s;
+}
+
+.drawer-disabled{
+  background-color: rgba(0, 0, 0, 0);
+
+  .formDrawer-container-main{
+    right: -35%;
+  }
+}
+
+.drawer-enable{
+  background-color: rgba(0, 0, 0, 0.25);
+
+  .formDrawer-container-main{
+    right: 0;
+  }
+}

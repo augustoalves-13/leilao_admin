@@ -14,12 +14,25 @@ const Button = (props) => {
   };
 
   switch (props.type) {
+    case "outlined":
+      return(
+        <button
+          onMouseLeave={onHover}
+          className="button-container-main outlined"
+          style={{ borderColor: props.color ? color : "#00205B", color: props.color ? color : "#00205B"}}
+          onClick={props.onClick}
+          disabled={props.disabled}
+        >
+          {props.children}
+        </button>
+      )
+
     case "progress":
       return (
         <button
           onMouseLeave={onHover}
           className="button-container-main"
-          style={{ backgroundColor: props.color ? color : "#00205B" }}
+          style={{ backgroundColor: props.color ? color : "#00205B", ...(props.size !== null) && {width: `${props.size}rem`, height: `${props.size / 3}rem`}}}
           onClick={props.onClick}
           disabled={props.disabled}
         >
@@ -31,7 +44,7 @@ const Button = (props) => {
         <button
           onMouseLeave={onHover}
           className="button-container-main"
-          style={{ backgroundColor: props.color ? color : "#00205B" }}
+          style={{ backgroundColor: props.color ? color : "#00205B", ...(props.size !== null)  && {width: `${props.size}rem`, height: `${props.size / 3}rem`}}}
           onClick={props.onClick}
           disabled={props.disabled}
         >

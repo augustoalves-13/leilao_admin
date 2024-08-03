@@ -37,3 +37,10 @@
 .button-container-main:hover{
   box-shadow: 0px 6px 8px 0px rgba(58, 53, 65, 0.2);
 }
+
+.outlined{
+  border-width: 2px;
+  border-style: solid;
+  box-shadow: none;
+  background-color: transparent;
+}

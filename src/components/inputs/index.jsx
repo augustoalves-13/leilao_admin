@@ -6,6 +6,22 @@ export const EntryField = (props) => {
 
   const Fields = () => {
     switch (props.type) {
+      
+      case 'select':
+        return (
+          <select className="default" name={props.name} value={props.value} onChange={props.onChange}>
+            <option value="" disabled>Selecione...</option>
+            {props.selectOptions.map(item => (
+              <option key={item.id} value={item.id}>{item.name}</option>
+            ))}
+          </select>
+        )
+
+      case 'divider':
+        return (
+          <p className="divider">{props.label}</p>
+        )
+
       case "password":
         return (
           <div className="password-input-container">
@@ -51,7 +67,7 @@ export const EntryField = (props) => {
 
   return (
     <div className="input-container-main">
-      <label>{props.label}</label>
+      <label>{props?.type !== 'divider' && props.label}</label>
       {Fields()}
     </div>
   );

@@ -5,15 +5,19 @@ import './scss/globals.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import LoginView from './views/login';
 import { Slide, ToastContainer } from 'react-toastify';
-import { DashboardView } from './views/dashboard';
+//import { DashboardView } from './views/dashboard';
 import UserView from './views/user';
+import EstablishmentView from './views/establishment';
+import StoreView from './views/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<LoginView/>}/>
-      <Route path='/dashboard' element={<UserView/>}/>
+      <Route path='/user' element={<UserView/>}/>
+      <Route path='/establishment' element={<EstablishmentView/>}/>
+      <Route path='/store' element={<StoreView/>}/>
     </Routes>
     <ToastContainer hideProgressBar closeOnClick transition={Slide} theme='colored'/>
   </BrowserRouter>

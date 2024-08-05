@@ -27,7 +27,7 @@ const LoginView = () => {
       ref.current.continuousStart()
       setTimeout(()=>{
         toast.success('Seja bem vindo, ' + request.data.name)
-        navigateTo('/dashboard')
+        navigateTo('/user')
       },3000)
     } catch (e) {
       ref.current.complete()

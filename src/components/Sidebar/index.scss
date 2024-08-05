@@ -1,0 +1,27 @@
+@import '../../scss/colors.scss';
+
+.aside-container-main{
+  width: 20%;
+  height: 100%;
+  background-color: #fff; 
+  z-index: 200;
+
+  button{
+    width: 100%;
+    padding: 20px 40px;
+    color: $primary;
+    border-radius: 0 50px 50px 0;
+    box-shadow: none;
+    transition: .3s;
+    border: none;
+    text-align: start;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  button:hover{
+    color: #fff;
+    background-color: $primary;
+  }
+
+}

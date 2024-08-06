@@ -10,11 +10,11 @@ export const DeviceView = () => {
   const fields = [
     {type: 'divider', label:"DADOS DO DEVICE"},
     //{name: 'initial_image', type:'file'}
-    {name:'name', label:'Nome do victor'},
-    {name:'name', label:'Nome do device'},
-    {name:'name', label:'Nome do device'},
-    {name:'name', label:'Nome do device'},
-    {name:'name', label:'Nome do device', type:'password'}
+    {name:'footer_path', label:'Logo', type:'file'},
+    {name:'Initial_image_path', label:'Imagem inicial', type:'file'},
+    {name:'Primary_color', label:'Cor primária'},
+    {name:'Secondary_color', label:'Cor secundária'},
+    {name:'Text_color', label:'Cor dos textos', type:'password'}
   ]
 
   const handleFormChange = (data) => {

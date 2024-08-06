@@ -40,7 +40,7 @@ const FormDrawer = (props) => {
           </header>
           <section className="form-contents">
             {props.fields.map((item) => (
-              <EntryField name={item?.name} type={item?.type} label={item?.label} onChange={handleChange} selectOptions={item.selectOptions} value={formData[item.name]}/>
+              <EntryField name={item?.name} type={item?.type} label={item?.label} onChange={handleChange} selectOptions={item.selectOptions} value={formData[item.name]} placeholder={item.placeholder}/>
             ))}
           </section>
           <div className="buttons-container">

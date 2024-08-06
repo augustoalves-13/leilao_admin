@@ -9,6 +9,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 import UserView from './views/user';
 import EstablishmentView from './views/establishment';
 import StoreView from './views/store';
+import { DeviceView } from './views/device';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
       <Route path='/user' element={<UserView/>}/>
       <Route path='/establishment' element={<EstablishmentView/>}/>
       <Route path='/store' element={<StoreView/>}/>
+      <Route path='/device' element={<DeviceView/>}/>
     </Routes>
     <ToastContainer hideProgressBar closeOnClick transition={Slide} theme='colored'/>
   </BrowserRouter>

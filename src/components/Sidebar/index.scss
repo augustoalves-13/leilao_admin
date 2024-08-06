@@ -3,10 +3,11 @@
 .aside-container-main{
   width: 20%;
   height: 100%;
-  background-color: #fff; 
+  background-color: $background-default; 
   z-index: 200;
 
   button{
+    background-color: transparent;
     width: 100%;
     padding: 20px 40px;
     color: $primary;

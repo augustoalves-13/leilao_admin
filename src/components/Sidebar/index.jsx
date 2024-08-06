@@ -9,7 +9,8 @@ export const Sidebar = () => {
       {label: "Dashboard", path:"/dashboard"},
       {label: "Usuários", path:"/user"},
       {label: "Estabelecimento", path:"/establishment"},
-      {label: "Loja", path:"/store"}
+      {label: "Loja", path:"/store"},
+      {label: "Device", path:"/device"}
   ]
 
   return (

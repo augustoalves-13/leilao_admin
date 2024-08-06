@@ -6,12 +6,20 @@ import { toast } from "react-toastify";
 import HeaderView from "../../components/HeaderView";
 import "./index.scss";
 import { Sidebar } from "../../components/Sidebar";
+import TableUI from "../../components/Table";
+import fetchRequest from "../../utils/fetchRequest";
 
 const UserView = () => {
   const [addDrawerOpen, setAddDrawerOpen] = useState(false);
   const [formValue, setFormValue] = useState({});
   const [gets, setGets] = useState(null);
-  
+  const [data, setData] = useState([])
+
+  const userRequest = async () => {
+    const resp = await fetchRequest('users')
+    setData(resp)
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,7 +30,8 @@ const UserView = () => {
       }
     };
 
-    fetchData();
+    userRequest()
+    fetchData()
   }, []);
 
   const fields = [
@@ -62,11 +71,27 @@ const UserView = () => {
     }
   };
 
+  const columns = [
+    { label: 'Nome', accessor: 'name' },
+    { label: 'Telefone', accessor: 'cell_number' },
+    { label: 'Email', accessor: 'email' },
+  ];
+
   return (
     <main className="user-container-main">
       <Sidebar />
       <section className="user-content">
         <HeaderView />
+
+        <TableUI
+          options={{
+            name:"Adicionar Usuário",
+            onClick: () => setAddDrawerOpen(true)
+          }}
+          data={data ?? []}
+          columns={columns}
+        />
+
         <FormDrawer
           options={{
             name: "Adicionar Usuário",

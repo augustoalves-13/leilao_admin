@@ -4,9 +4,19 @@ import "./index.scss";
 export const EntryField = (props) => {
   const [passwordVisible, setPasswordVisible] = useState(false)
 
+
+  
   const Fields = () => {
     switch (props.type) {
       
+      case 'file':
+        return(
+          <div className="file-input-container">
+            <p>Selecione o arquivo</p>
+            <input type="file" />
+          </div>
+        )
+
       case 'select':
         return (
           <select className="default" name={props.name} value={props.value} onChange={props.onChange}>

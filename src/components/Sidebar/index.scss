@@ -3,14 +3,20 @@
 .aside-container-main{
   width: 20%;
   height: 100%;
-  background-color: $background-default; 
+  background-color: $primary; 
   z-index: 200;
+  color: #fff;
+  text-align: start;
+ 
+h3{
+  margin: 11.5%;
+}
 
   button{
     background-color: transparent;
     width: 100%;
     padding: 20px 40px;
-    color: $primary;
+    color: #fff;
     border-radius: 0 50px 50px 0;
     box-shadow: none;
     transition: .3s;
@@ -22,7 +28,7 @@
 
   button:hover{
     color: #fff;
-    background-color: $primary;
+    background-color: $primary-hover;
   }
 
 }

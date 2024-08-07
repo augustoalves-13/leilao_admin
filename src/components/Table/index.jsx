@@ -84,7 +84,7 @@ const Table = ({ columns, data, options }) => {
           {filteredData.map((item, index) => (
             <tr key={index}>
               {columns.map(column => (
-                <td key={column.accessor}>{item[column.accessor]}</td>
+                <td key={column.accessor}>{ String(item[column.accessor]).length > 30 ? `${String(item[column.accessor]).slice(0,35)}...` : item[column.accessor]}</td>
               ))}
             </tr>
           ))}

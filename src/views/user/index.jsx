@@ -81,7 +81,7 @@ const UserView = () => {
     <main className="user-container-main">
       <Sidebar />
       <section className="user-content">
-        <HeaderView />
+        <HeaderView title='Usuários' />
 
         <TableUI
           options={{

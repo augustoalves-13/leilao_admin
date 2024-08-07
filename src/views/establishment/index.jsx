@@ -76,7 +76,7 @@ const EstablishmentView = () => {
     <main className="establishment-container-main">
       <Sidebar />
       <section className="establishment-contents">
-        <HeaderView />
+        <HeaderView title='Estabelecimento'/>
 
         
         <TableUI

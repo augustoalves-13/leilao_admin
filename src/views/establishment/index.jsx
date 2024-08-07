@@ -20,7 +20,6 @@ const EstablishmentView = () => {
 
   useEffect(() => {
     EstRequest();
-   
   }, []);
 
   const columns = [
@@ -76,7 +75,7 @@ const EstablishmentView = () => {
   return (
     <main className="establishment-container-main">
       <Sidebar />
-      <section>
+      <section className="establishment-contents">
         <HeaderView />
 
         

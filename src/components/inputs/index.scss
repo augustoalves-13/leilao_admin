@@ -87,3 +87,18 @@
     color: $text-default-2;
   }
 }
+
+.file-input-container{
+  height: 150px;
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid rgba(46, 38, 61, 0.41);
+  border-radius: 5px 0px 0px 5px;
+  color: $text-default-2;
+  padding: 0 5px;
+
+  input{
+    visibility: hidden;
+    position: absolute;
+  }
+}

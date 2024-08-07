@@ -4,16 +4,29 @@ import "./index.scss";
 export const EntryField = (props) => {
   const [passwordVisible, setPasswordVisible] = useState(false)
 
+  const openFileSelector = () => {
+    document.getElementById(props.id).click()
+  }
 
-  
+  const openImage = (img) => {
+    if(!img){
+      return '/logo512.png'
+    }else{
+      return URL.createObjectURL(img)
+    }
+  }
+
   const Fields = () => {
     switch (props.type) {
       
       case 'file':
         return(
-          <div className="file-input-container">
+          <div onClick={openFileSelector} className="file-input-container">
             <p>Selecione o arquivo</p>
-            <input type="file" />
+            {props.value && (
+              <img src={openImage(props.value)}/>
+            )}
+            <input type="file" name={props.name} onChange={props.onChange} value={props.value} id={props.id}/>
           </div>
         )
 
@@ -75,10 +88,14 @@ export const EntryField = (props) => {
     }
   };
 
-  return (
+  return props.type !== 'file' ? (
     <div className="input-container-main">
       <label>{props?.type !== 'divider' && props.label}</label>
       {Fields()}
     </div>
-  );
+  ):(
+    <>
+      {Fields()}
+    </>
+  )
 };

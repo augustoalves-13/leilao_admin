@@ -11,7 +11,7 @@ const sidebarData = [
   { label: "Estabelecimento", path: "/establishment", icon: 'location_city' },
   { label: "Loja", path: "/store", icon: 'store' },
   { label: "Terminais", path: "/device", icon: 'devices' },
-  { label: "Produtos", path: "/products", icon: 'category' },
+  { label: "Produtos", path: "/product", icon: 'category' },
 ];
 
 export const Sidebar = () => {

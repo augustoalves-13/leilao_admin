@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import Button from '../Button';
 import { EntryField } from '../inputs';
 import './index.scss'
@@ -72,10 +73,12 @@ const Table = ({ columns, data, options }) => {
                   key={column.accessor}
                   onClick={() => requestSort(column.accessor)}
                 >
-                  {column.label}
-                  {sortConfig && sortConfig.key === column.accessor ? (
-                    sortConfig.direction === 'ascending' ? ' 🔼' : ' 🔽'
-                  ) : null}
+                  <Typography className='text'>
+                    <p>{column.label}</p>
+                    {sortConfig && sortConfig.key === column.accessor ? (
+                      sortConfig.direction === 'ascending' ? (<span className="material-symbols-outlined">keyboard_arrow_up</span>) : (<span className="material-symbols-outlined">keyboard_arrow_down</span>)
+                    ) : null}
+                  </Typography>
                 </th>
               ))}
             </tr>

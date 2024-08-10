@@ -10,17 +10,19 @@ import UserView from './views/user';
 import EstablishmentView from './views/establishment';
 import StoreView from './views/store';
 import { DeviceView } from './views/device';
+import { ProductView } from './views/product';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<LoginView/>}/>
-      <Route path='/user' element={<UserView/>}/>
-      <Route path='/establishment' element={<EstablishmentView/>}/>
-      <Route path='/store' element={<StoreView/>}/>
-      <Route path='/device' element={<DeviceView/>}/>
+      <Route path='/' element={<LoginView />} />
+      <Route path='/user' element={<UserView />} />
+      <Route path='/establishment' element={<EstablishmentView />} />
+      <Route path='/store' element={<StoreView />} />
+      <Route path='/device' element={<DeviceView />} />
+      <Route path='/product' element={<ProductView />} />
     </Routes>
-    <ToastContainer hideProgressBar closeOnClick transition={Slide} theme='colored'/>
+    <ToastContainer hideProgressBar closeOnClick transition={Slide} theme='colored' />
   </BrowserRouter>
 );

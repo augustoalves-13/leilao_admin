@@ -12,6 +12,7 @@ export const Sidebar = () => {
     { label: "Estabelecimento", path: "/establishment" },
     { label: "Loja", path: "/store" },
     { label: "Device", path: "/device" },
+    { label: "Produtos", path: "/product" },
   ];
 
   const [storageData, setStorageData] = useState();

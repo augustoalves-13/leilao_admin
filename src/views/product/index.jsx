@@ -6,6 +6,7 @@ import FormDrawer from "../../components/FormDrawer";
 import fetchRequest from "../../utils/fetchRequest";
 import TableUI from "../../components/Table";
 import { toast } from "react-toastify";
+import api from "../../utils/api";
 
 export const ProductView = () => {
   const [addDrawerOpen, setAddDrawerOpen] = useState(false);
@@ -23,6 +24,8 @@ export const ProductView = () => {
 
   const columns = [
     { label: "Nome", accessor: "name" },
+    { label: "Raça", accessor: "race" },
+    { label: "Cód. Produto", accessor: "code_product"},
     { label: "Categoria", accessor: "category_name" },
   ];
 
@@ -36,7 +39,7 @@ export const ProductView = () => {
     { name: "owner", label: "Proprietario" },
     { label: "Curral", name: "corral" },
     {
-      name: "initial_iamge",
+      name: "initial_image",
       label: "Logo do Produto",
       type: "file",
       id: "initial_image",
@@ -57,12 +60,22 @@ export const ProductView = () => {
 
   const onSubmit = async () => {
     try {
-      const FormData = new FormData();
-      FormData.append("initial_image", formValue.initial_image);
-      FormData.append("details_image", formValue.details_image);
-      FormData.append("datasheet", formValue.datasheet);
-      setAddDrawerOpen(false);
+      const formData = new FormData();
+      Object.keys(formValue).forEach((key) => {
+        if(formData[key] instanceof File){
+          formData.append(key, formValue[key])
+        } else {
+          formData.append(key, formValue[key])
+        }
+      })
 
+      await api.post('categories/1/products', formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+
+      setAddDrawerOpen(false);
       toast.success("Operação concluida");
     } catch (e) {
       toast.error(e?.response?.data?.error);

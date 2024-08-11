@@ -59,7 +59,7 @@ export const DeviceView = () => {
       Object.keys(formValue).forEach((key)=>{
         if(formData[key] instanceof File){
           formData.append(key, formValue[key])
-        }else {
+        } else {
           formData.append(key, formValue[key])
         }
       })

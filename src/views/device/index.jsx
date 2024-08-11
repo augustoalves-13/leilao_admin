@@ -16,14 +16,13 @@ export const DeviceView = () => {
 
   const DeviceRequest = async () => {
     const resp = await fetchRequest("store/1/device");
-   const mapResp = resp.map((item)=>{
-    return{
-   ...item,
-   created_at:dayjs(item.created_at).format('DD/MM/YYYY')
-    }
-   }) 
+    const mapResp = resp.map((item)=>{
+      return{
+        ...item,
+        created_at:dayjs(item.created_at).format('DD/MM/YYYY')
+      }
+    }) 
     setData(mapResp);
-    console.log("a", data);
   };
 
   useEffect(() => {
@@ -37,16 +36,16 @@ export const DeviceView = () => {
 
   const fields = [
     { type: "divider", label: "DADOS DO DEVICE" },
-    //{name: 'initial_image', type:'file'}
     { name: "footer_path", label: "Logo", type: "file", id: "footer_path" },
     {
       name: "initial_image_path",
       label: "Imagem inicial",
-      type: "initial_image_path",
+      type: "file",
+      id: "initial_image_path"
     },
-    { name: "primary_color", label: "Cor primária" },
-    { name: "secondary_color", label: "Cor secundária" },
-    { name: "text_color", label: "Cor dos textos", type: "password" },
+    { name: "primary_color", label: "Cor primária", type: 'color' },
+    { name: "secondary_color", label: "Cor secundária", type: 'color' },
+    { name: "text_color", label: "Cor dos textos", type: 'color' },
   ];
 
   const handleFormChange = (data) => {
@@ -55,22 +54,30 @@ export const DeviceView = () => {
 
   const onSubmit = async () => {
     try {
-      await api.post("/store/1/devices", formValue, {
+      const formData = new FormData();
+      
+      Object.keys(formValue).forEach((key)=>{
+        if(formData[key] instanceof File){
+          formData.append(key, formValue[key])
+        }else {
+          formData.append(key, formValue[key])
+        }
+      })
+
+      await api.post("store/1/device", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      const formData = new FormData();
-      formData.append("footer_path", formValue.footer_path);
-      formData.append("initial_image", formValue.initial_image_path);
       setAddDrawerOpen(false);
-
       toast.success("Operação concluída");
     } catch (e) {
       toast.error(e?.response?.data?.error);
     }
   };
+
+  console.log(formValue)
 
   return (
     <main className="device-container-main">
@@ -87,10 +94,6 @@ export const DeviceView = () => {
           columns={columns}
         />
         
-        
-       
-       
-       
         <FormDrawer
           options={{
             name: "ADICIONAR DEVICE",

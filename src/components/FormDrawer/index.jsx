@@ -5,30 +5,40 @@ import "./index.scss";
 
 const FormDrawer = (props) => {
   const [visible, setVisible] = useState(false);
-  const [formData, setFormData] = useState(props.fields.reduce((acc, field) => {
-    if(field.name) {
-      acc[field.name] = '';
-    }
-    return acc
-  }, {}))
-
-  useEffect(()=>{
-    props.onChange(formData)
-  },[formData, props.onChange])
-
-  const handleChange = (e) => {
-    const {name, value} = e.target
-    setFormData({
-      ...formData,
-      [name]: value
-    })
-  }
+  const [formData, setFormData] = useState(
+    props.fields.reduce((acc, field) => {
+      if (field.name) {
+        acc[field.name] = "";
+      }
+      return acc;
+    }, {})
+  );
 
   useEffect(() => {
-    setVisible(props.open)
+    props.onChange(formData);
+  }, [formData, props.onChange]);
+
+  const handleChange = (e) => {
+    const { name, type, value, files } = e.target;
+    if (type === "file") {
+      setFormData({
+        ...formData,
+        [name]: files[0] || null,
+      })
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      })
+    }
+  };
+
+  useEffect(() => {
+    setVisible(props.open);
   }, [props.open]);
 
-  return props.open && (
+  return (
+    props.open && (
       <section
         className={`drawer-modal-container-main ${
           visible ? "drawer-enable" : "drawer-disabled"
@@ -40,7 +50,16 @@ const FormDrawer = (props) => {
           </header>
           <section className="form-contents">
             {props.fields.map((item) => (
-              <EntryField name={item?.name} type={item?.type} label={item?.label} onChange={handleChange} selectOptions={item.selectOptions} value={formData[item.name]} placeholder={item.placeholder} id={item.id}/>
+              <EntryField
+                name={item?.name}
+                type={item?.type}
+                label={item?.label}
+                onChange={handleChange}
+                selectOptions={item.selectOptions}
+                value={item.type === "file" ? undefined : formData[item.name]}
+                placeholder={item.placeholder}
+                id={item.id}
+              />
             ))}
           </section>
           <div className="buttons-container">
@@ -55,7 +74,7 @@ const FormDrawer = (props) => {
         </div>
       </section>
     )
-  
+  );
 };
 
 export default FormDrawer;

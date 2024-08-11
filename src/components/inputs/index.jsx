@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.scss";
 
 export const EntryField = (props) => {
   const [passwordVisible, setPasswordVisible] = useState(false)
+  const [selectedFile, setSelectedFile] = useState(null)
 
   const openFileSelector = () => {
     document.getElementById(props.id).click()
@@ -10,23 +11,38 @@ export const EntryField = (props) => {
 
   const openImage = (img) => {
     if(!img){
-      return '/logo512.png'
+      return '/images/input-file.png'
     }else{
       return URL.createObjectURL(img)
     }
   }
 
+  const handleFileChange = (e) =>{
+    const file = e.target.files[0]
+    setSelectedFile(file)
+    props.onChange && props.onChange(e)
+  }
+
   const Fields = () => {
-    switch (props.type) {
+    switch (props.type) {  
+      case 'color':
+        return(
+          <input
+            type="color"
+            value={props.value}
+            name={props.name}
+            onChange={props.onChange}
+            disabled={props.disabled}
+            placeholder={props.placeholder ?? `Insira seu ${props.label}`}
+            className="default"
+          />
+        )
       
       case 'file':
         return(
           <div onClick={openFileSelector} className="file-input-container">
-            <p>Selecione o arquivo</p>
-            {props.value && (
-              <img src={openImage(props.value)}/>
-            )}
-            <input type="file" name={props.name} onChange={props.onChange} value={props.value} id={props.id}/>
+            <img className="file-selected-image" src={openImage(selectedFile)}/>
+            <input type="file" name={props.name} onChange={handleFileChange} value={props.value} id={props.id}/>
           </div>
         )
 
@@ -88,14 +104,10 @@ export const EntryField = (props) => {
     }
   };
 
-  return props.type !== 'file' ? (
+  return( 
     <div className="input-container-main">
       <label>{props?.type !== 'divider' && props.label}</label>
       {Fields()}
     </div>
-  ):(
-    <>
-      {Fields()}
-    </>
   )
 };

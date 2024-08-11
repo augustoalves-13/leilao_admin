@@ -6,6 +6,7 @@
   width: 100%;
 
   label{
+    border-radius: 3px;
     color: $text-color;
     font-weight: 500;
     padding: 0 2px;
@@ -39,6 +40,7 @@
   .default{
     height: 38px;
     border-radius: 4px;
+    padding: 5px 10px;
   }
 
   .password-input-container{
@@ -95,10 +97,20 @@
   border: 2px solid rgba(46, 38, 61, 0.41);
   border-radius: 5px 0px 0px 5px;
   color: $text-default-2;
-  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 
   input{
     visibility: hidden;
     position: absolute;
+  }
+
+  .file-selected-image{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
   }
 }

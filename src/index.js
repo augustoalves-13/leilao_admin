@@ -11,6 +11,7 @@ import EstablishmentView from './views/establishment';
 import StoreView from './views/store';
 import { DeviceView } from './views/device';
 import { ProductView } from './views/product';
+import DetailsProductView from './views/details/product';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
       <Route path='/store' element={<StoreView />} />
       <Route path='/device' element={<DeviceView />} />
       <Route path='/product' element={<ProductView />} />
+      <Route path='/details/product/:id/view' element={<DetailsProductView />} />
     </Routes>
     <ToastContainer hideProgressBar closeOnClick transition={Slide} theme='colored' />
   </BrowserRouter>

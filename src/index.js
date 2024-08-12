@@ -12,6 +12,7 @@ import StoreView from './views/store';
 import { DeviceView } from './views/device';
 import { ProductView } from './views/product';
 import DetailsProductView from './views/details/product';
+import CategoriesView from './views/categories';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
       <Route path='/establishment' element={<EstablishmentView />} />
       <Route path='/store' element={<StoreView />} />
       <Route path='/device' element={<DeviceView />} />
+      <Route path='/categories' element={<CategoriesView />} />
       <Route path='/product' element={<ProductView />} />
       <Route path='/details/product/:id/view' element={<DetailsProductView />} />
     </Routes>

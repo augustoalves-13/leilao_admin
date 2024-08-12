@@ -4,7 +4,7 @@ import { EntryField } from '../inputs';
 import './index.scss'
 import React, { useState, useMemo } from 'react';
 
-const Table = ({ columns, data, options }) => {
+const TableUI = ({ columns, data, options }) => {
   const [sortConfig, setSortConfig] = useState(null);
   const [filter, setFilter] = useState('');
 
@@ -58,7 +58,7 @@ const Table = ({ columns, data, options }) => {
         </div>
 
         <div>
-          <Button onClick={options.onClick}> 
+          <Button onClick={options?.onClick ?? null}> 
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
             {options?.name}
           </Button>
@@ -97,4 +97,4 @@ const Table = ({ columns, data, options }) => {
   );
 };
 
-export default Table;
+export default TableUI;

@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body, main, .root{
+  overflow-y: hidden;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -18,7 +22,14 @@ code {
   box-sizing: border-box;
 }
 
+.view-container-main{
+  display: flex;
 
+  .view-contents{
+      padding: 2% 10px;
+      width: 100%;
+  }
+}
 
 .material-symbols-outlined {
   font-variation-settings:

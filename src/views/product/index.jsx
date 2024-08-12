@@ -26,7 +26,7 @@ export const ProductView = () => {
     { label: "Nome", accessor: "name" },
     { label: "Raça", accessor: "race" },
     { label: "Cód. Produto", accessor: "code_product"},
-    { label: "Categoria", accessor: "category_name" },
+    { label: "Categoria", accessor: "category" },
   ];
 
   const fields = [
